@@ -84,11 +84,21 @@ Class imbalance is introduced by simulating two levels of imbalance:
 
 - **Key Observation**: Balanced Softmax proves robust even with a high imbalance factor and complex dataset.
 
-### **2. Impact of Calibration Techniques**
+### **2. Trade-off Between Accuracy and Calibration**
+The **Harmonic Score** serves as an effective metric to balance accuracy (ACC) and calibration error (ECE). 
+- **Higher ACC** reflects better classification performance.
+- **Lower ECE** indicates improved confidence alignment.
+- A **high Harmonic Score** demonstrates a balance between these two objectives.
+
+For instance:
+- CRD + Balanced Softmax achieves **ACC = 79.60%** and **ECE = 0.0819**, resulting in a Harmonic Score of **1.0000**.
+- In contrast, methods like Vanilla KD with ALS show significant trade-offs, where improvements in calibration often lead to reduced accuracy.
+
+### **3. Impact of Calibration Techniques**
 - **Balanced Softmax** consistently outperforms other calibration techniques in reducing the impact of class imbalance.
 - **ALS** improves model generalization but underperforms in calibration for extreme imbalance scenarios.
 
-### **3. Influence of Knowledge Distillation Methods**
+### **4. Influence of Knowledge Distillation Methods**
 - **Contrastive Representation Distillation (CRD)** achieves the best balance between performance and reliability.
 - **Vanilla KD** underperforms compared to advanced KD techniques like CRD and RKD.
 
@@ -110,6 +120,8 @@ Harmonic Score graphs highlight the best-performing combinations in terms of bal
 ![cal_10_100](https://github.com/user-attachments/assets/22a6cab2-8aa8-4faf-ac1d-ce3411086775)
 ![cal_100_50](https://github.com/user-attachments/assets/40a1401c-f73a-403b-b685-7e4f655d3e07)
 ![cal_100_100](https://github.com/user-attachments/assets/4bb031be-9db7-4033-9b94-d31cd1544394)
+
+---
 
 ## 🤝 **Contributors**
 - **Son Minhyeok**
